@@ -10,4 +10,7 @@ jobs:
       - run: yarn # run the `echo` command
       - run: yarn lint
       - run: yarn test-expressions
+      - store_artifacts:
+          path: /test/integration/expression-tests/index.html
+          destination: test-coverage
       - run: yarn test-unit
