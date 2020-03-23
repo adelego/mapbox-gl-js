@@ -5,12 +5,13 @@ jobs:
   build:
     docker:
       - image: circleci/node:10.16-browsers # the primary container, where your job's commands are run
+    working_directory: ~/mapbox-gl-js
     steps:
       - checkout # check out the code in the project directory
       - run: yarn # run the `echo` command
       - run: yarn lint
       - run: yarn test-expressions
       - store_artifacts:
-          path: /test/integration/expression-tests/index.html
+          path: test/integration/expression-tests/index.html
           destination: test-coverage
       - run: yarn test-unit
